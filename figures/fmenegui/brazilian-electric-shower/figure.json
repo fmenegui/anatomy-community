@@ -2,7 +2,7 @@
   "id": "brazilian-electric-shower",
   "title": "Brazilian electric shower",
   "author": "fmenegui",
-  "prompt": "/anatomy explain how a Brazilian electric shower works. Make the diaphragm and electrical contacts clear in an enlarged working cutaway. Use English throughout.",
+  "prompt": "/anatomy explain how a Brazilian electric shower works as one working isometric cutaway. Show the diaphragm, stem and contacts inside the shower. Zoom into the same object, without charts or a separate circuit diagram. Use English throughout.",
   "kind": "SVG",
   "agent": "Codex",
   "model": "GPT (Codex)",

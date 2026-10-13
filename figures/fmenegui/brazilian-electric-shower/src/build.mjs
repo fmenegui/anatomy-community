@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import {fileURLToPath} from 'node:url'
-import {pressureSvg, circuitSvg} from './pressure.mjs'
+import {projectPoint, focusBounds} from './pressure.mjs'
 import * as k from '../../../../.skill/kit/iso-kit.mjs'
 import * as G from '../../../../.skill/kit/lathe.mjs'
 import * as A from '../../../../.skill/kit/audit.mjs'
@@ -196,21 +196,21 @@ console.log('Scene:',R.items.length,'drawn parts,',R.solids.length,'recorded sol
 const settled=A.settle(R,P,{step:.8,least:.6,states:[0]})
 R.items.sort((a,b)=>a.key-b.key)
 const solids=R.items.map(i=>i.svg).join('')
-const svg=`<svg xmlns="http://www.w3.org/2000/svg" class="sh-svg iso-svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="sh-svg-title sh-svg-desc"><title id="sh-svg-title">Brazilian electric shower cutaway</title><desc id="sh-svg-desc">Water enters at the side, crosses the heating chamber and exits through the spray plate. Above the wet chamber, a diaphragm raises an insulated actuator and closes the pressure contacts. Front housing removed. Connections simplified.</desc><defs><linearGradient id="sh-jet-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--blue)" stop-opacity=".5"/><stop offset="1" stop-color="var(--blue)" stop-opacity="0"/></linearGradient></defs><g data-camera=""><g data-layer="sprays">${sprayMarkup.join('')}</g><g data-layer="parts">${solids}</g><g data-layer="flow"><path id="sh-cold-path" class="sh-flow-track" d="${d3(coldRoute)}"/><path id="sh-hot-path" class="sh-flow-track" d="${d3(hotRoute)}"/>${Array.from({length:10},(_,i)=>`<circle data-tracer="${i}" r="2.3" class="sh-tracer"/>`).join('')}</g></g></svg>`
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" class="sh-svg iso-svg" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="sh3-svg-title sh3-svg-desc"><title id="sh3-svg-title">Brazilian electric shower cutaway</title><desc id="sh3-svg-desc">Water enters at the side, crosses the heating chamber and exits through the spray plate. Above the wet chamber, a diaphragm raises an insulated actuator and closes the pressure contacts. Front housing removed. Connections simplified.</desc><defs><linearGradient id="sh3-jet-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--blue)" stop-opacity=".5"/><stop offset="1" stop-color="var(--blue)" stop-opacity="0"/></linearGradient></defs><g data-camera=""><g data-layer="sprays">${sprayMarkup.join('')}</g><g data-layer="parts">${solids}</g><g data-layer="flow"><path id="sh3-cold-path" class="sh-flow-track" d="${d3(coldRoute)}"/><path id="sh3-hot-path" class="sh-flow-track" d="${d3(hotRoute)}"/>${Array.from({length:10},(_,i)=>`<circle data-tracer="${i}" r="1.2" class="sh-tracer"/>`).join('')}</g></g></svg>`
 
 const kitCss=fs.readFileSync(new URL('../../../../.skill/kit/iso.css',import.meta.url),'utf8')
 const css=kitCss.slice(kitCss.indexOf('.iso-svg'),kitCss.indexOf('@keyframes'))
-const scoped=css.replace(/(^|\n)([^@\n{}]+)\{/g,(m,pre,sel)=>pre+sel.split(',').map(s=>'#brazil-shower '+s.trim()).join(',')+'{')
+const scoped=css.replace(/(^|\n)([^@\n{}]+)\{/g,(m,pre,sel)=>pre+sel.split(',').map(s=>'#electric-shower-cutaway-3 '+s.trim()).join(',')+'{')
 let template=fs.readFileSync(path.join(HERE,'fragment.html'),'utf8')
 const runtime=fs.readFileSync(path.join(HERE,'live.js'),'utf8')
 const model=fs.readFileSync(path.join(HERE,'model.mjs'),'utf8').replace(/^export\s+/gm,'')
-const data={P,W,H,diaphragm:DC,at0:at([0,0,0]),atRise:at([0,0,4]),flowData,parts:R.items.length}
-template=template.replace('<!-- GEOMETRY -->',svg).replace('/* KIT_CSS */',scoped).replace('/* RUNTIME */',model+'\n'+pressureSvg.toString()+'\n'+circuitSvg.toString()+'\nconst DATA='+JSON.stringify(data)+'\n'+runtime)
+const data={P,W,H,diaphragm:DC,at0:at([0,0,0]),atRise:at([0,0,4]),flowData,parts:R.items.length,focus:focusBounds(P)}
+template=template.replace('<!-- GEOMETRY -->',svg).replace('/* KIT_CSS */',scoped).replace('/* RUNTIME */',model+'\n'+projectPoint.toString()+'\nconst DATA='+JSON.stringify(data)+'\n'+runtime)
 const light=process.argv.includes('--light')
 const page=light?'shower-light.html':'shower.html'
 const pageCss=fs.readFileSync(path.join(HERE,'page.css'),'utf8')
-const body=template.replace('<!-- PRESSURE -->',pressureSvg(420,1,true)).replace('<!-- CIRCUIT -->',circuitSvg(250,true,true))
-const html='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brazilian electric shower</title><style>'+pageCss+'</style></head><body class="iso" data-theme="'+(light?'light':'dark')+'"><main class="iso-page">'+body+'</main></body></html>'
+const body=template
+const html='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inside a Brazilian electric shower</title><style>'+pageCss+'</style></head><body class="iso" data-theme="'+(light?'light':'dark')+'"><main class="iso-page">'+body+'</main></body></html>'
 fs.writeFileSync(path.join(HERE,page),html)
 if(process.argv.includes('--audit'))A.auditOrExit(R,P)
 console.log('Wrote '+page)
