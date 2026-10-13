@@ -1,0 +1,11 @@
+{
+  "poses": 121,
+  "maxDepth": 130,
+  "maxFaces": 18642,
+  "maxMs": 140.21416600000003,
+  "rayChecks": 2269,
+  "bad": 0,
+  "maxError": 5.684341886080802e-14,
+  "vertexCount": 1682856,
+  "note": "Testes de geometria e ordem de polígonos em Node. Não medem desempenho ou funcionamento em navegador."
+}

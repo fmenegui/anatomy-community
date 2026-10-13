@@ -1,0 +1,22 @@
+{
+  "samples": 7201,
+  "gaps": {
+    "crank_floor_mm": 2.9273357186221034,
+    "crank_back_wall_mm": 6.927335718622103,
+    "piston_skirt_crank_web_mm": 30.480517946778832,
+    "rod_piston_inner_wall_conservative_mm": 22.607556010550194,
+    "rod_big_end_to_web_axial_mm": 6,
+    "rod_small_end_to_boss_axial_mm": 1.5,
+    "valve_to_valve_mm": 16,
+    "cam_to_bearing_axial_mm": 14,
+    "cam_to_tappet_guide_vertical_conservative_mm": 1.8000000000000114,
+    "spring_to_guide_radial_mm": 2.549999999999999,
+    "spring_to_bucket_radial_mm": 1.6500000000000004,
+    "retainer_to_bucket_radial_mm": 0.6999999999999993,
+    "tappet_to_guide_nominal_radial_mm": 0.0600000000000005,
+    "piston_to_bore_nominal_radial_mm": 0.14999999999999858,
+    "spring_min_pitch_minus_wire_mm": 2.783333333333333,
+    "timing_belt_to_head_axial_mm": 16
+  },
+  "scope": "Verificação de folgas dos principais corpos móveis por relações analíticas e envoltórias conservadoras. Contatos funcionais são intencionais. Não verifica tolerâncias de fabricação, geometrias completas de parafusos, sedes, dentes ou galerias omitidas."
+}

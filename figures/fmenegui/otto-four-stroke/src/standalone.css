@@ -1,0 +1,27 @@
+html { color-scheme: light dark }
+body { margin:0; padding:24px; font:14px/1.45 system-ui,sans-serif; background:var(--background); color:var(--foreground) }
+:root { --background:light-dark(#fafbfc,#151a1e); --foreground:light-dark(#202b34,#e8edef); --card:light-dark(#ffffff,#1a2228); --muted-foreground:light-dark(#64717b,#a4b4bf); --border:light-dark(#d8dee3,#44515b); --viz-series-1:light-dark(#266e92,#74bfe3); --viz-series-2:light-dark(#b65e32,#e9a170); --primary:light-dark(#243d4e,#d6e5ef); --primary-foreground:light-dark(#ffffff,#16232c) }
+#wrap { max-width:1024px; margin:auto }
+h2 { font-size:24px; font-weight:500; margin:4px 0 0 }
+strong { font-weight:500 }
+.btn { font:inherit; border:1px solid var(--border); background:var(--card); color:var(--foreground); border-radius:6px; padding:7px 12px; cursor:pointer }
+.btn-primary,.btn[aria-pressed=true] { background:var(--primary); color:var(--primary-foreground) }
+.form-label { display:block; min-width:0 }
+.form-select { display:block; font:inherit; padding:7px 8px; border:1px solid var(--border); color:var(--foreground); background:var(--card); border-radius:6px; max-width:100%; box-sizing:border-box }
+.form-range { width:100%; accent-color:var(--viz-series-1) }
+.form-check { display:flex; align-items:center; gap:6px }
+.viz-controls { display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+.viz-badge { padding:4px 8px; background:var(--card); border-radius:5px }
+.text-small { font-size:12px }
+.text-muted { color:var(--muted-foreground) }
+.table { width:100%; border-collapse:collapse }
+.table td,.table th { padding:6px; border-bottom:1px solid var(--border); text-align:left }
+.table th { font-weight:500 }
+.table .text-end { text-align:right }
+.table-responsive { overflow:auto }
+hr { border:0; border-top:1px solid var(--border); margin:20px 0 }
+p { margin:8px 0 }
+a { color:var(--viz-series-1) }
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible { outline:2px solid var(--viz-series-1); outline-offset:3px }
+@media(max-width:600px) { body { padding:14px } }
+@media(pointer:coarse) { button,select,summary { min-height:44px } input[type=range] { height:36px } input,select { font-size:16px } }

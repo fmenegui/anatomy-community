@@ -1,0 +1,107 @@
+<div id="otto-anatomy-lab">
+  <style>
+    #otto-anatomy-lab { color:var(--foreground); font-family:inherit; --metal-lo-0:light-dark(#66737b,#24323a); --metal-lo-1:light-dark(#87969e,#33434d); --metal-lo-2:light-dark(#a5b1b6,#455962); --metal-lo-3:light-dark(#bdc8cd,#657c86); --metal-mid-0:light-dark(#82929c,#354b58); --metal-mid-1:light-dark(#a5b3bc,#536b79); --metal-mid-2:light-dark(#c7d0d6,#79919e); --metal-mid-3:light-dark(#e0e6e9,#a6b8c2); --metal-hi-0:light-dark(#9eafb9,#576f7e); --metal-hi-1:light-dark(#c0cdd5,#7f98a8); --metal-hi-2:light-dark(#dce6ec,#b1c5d1); --metal-hi-3:light-dark(#f1f6f8,#e4edf2); }
+    #otto-anatomy-lab .ot-heading { display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px }
+    #otto-anatomy-lab .ot-layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:22px; align-items:start }
+    #otto-anatomy-lab .ot-stage { position:relative; min-width:0 }
+    #otto-anatomy-lab .ot-machine { width:100%; display:block; aspect-ratio:570/650; touch-action:pan-y }
+    #otto-anatomy-lab .ot-machine path { transition:opacity .13s ease }
+    #otto-anatomy-lab .ot-machine [data-piece] { cursor:inherit }
+    #otto-anatomy-lab .ot-piece-detail { min-height:4.2em; margin-top:10px }
+    #otto-anatomy-lab .ot-plot { display:block; width:100%; overflow:visible }
+    #otto-anatomy-lab .ot-plot text { fill:var(--foreground); font:12px system-ui,sans-serif }
+    #otto-anatomy-lab .ot-machine text { fill:var(--foreground); font:12px system-ui,sans-serif }
+    #otto-anatomy-lab .ot-plots { display:grid; gap:12px }
+    #otto-anatomy-lab .ot-bottom { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px }
+    #otto-anatomy-lab .ot-reading { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:10px 0 }
+    #otto-anatomy-lab .ot-reading output { display:block; font-variant-numeric:tabular-nums }
+    #otto-anatomy-lab .ot-angle { margin:12px 0 }
+    #otto-anatomy-lab .ot-selectrow { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:12px 0 }
+    #otto-anatomy-lab .ot-columns { display:grid; grid-template-columns:1fr 1fr; gap:20px }
+    #otto-anatomy-lab details { margin-top:14px }
+    #otto-anatomy-lab summary { margin-bottom:10px }
+    #otto-anatomy-lab .ot-legend { display:flex; gap:16px; flex-wrap:wrap; margin-top:5px }
+    #otto-anatomy-lab .ot-key { display:inline-block; width:18px; height:3px; vertical-align:middle; margin-right:5px }
+    #otto-anatomy-lab .ot-status { min-height:1.5em }
+    #otto-anatomy-lab .ot-stroke-buttons { display:flex; flex-wrap:wrap; gap:6px }
+    #otto-anatomy-lab .ot-caption { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin:6px 0 }
+    #otto-anatomy-lab .ot-range-label { display:flex; justify-content:space-between; gap:8px }
+    #otto-anatomy-lab [hidden] { display:none !important }
+    @media (max-width:700px) { #otto-anatomy-lab .ot-layout { grid-template-columns:1fr } #otto-anatomy-lab .ot-bottom,#otto-anatomy-lab .ot-columns { grid-template-columns:1fr } #otto-anatomy-lab .ot-selectrow { grid-template-columns:1fr } }
+    @media (prefers-reduced-motion:reduce) { #otto-anatomy-lab * { transition:none !important } }
+  </style>
+  <div class="ot-heading"><div><span class="text-small text-muted">FIG. 01 · ANATOMY / ENGENHARIA</span><h2>Motor de quatro tempos · Otto</h2></div><span class="viz-badge" data-ui="phase">Admissão</span></div>
+  <div class="viz-controls">
+    <button class="btn btn-primary" type="button" data-action="play">Pausar</button>
+    <button class="btn" type="button" data-action="reset">Reiniciar</button>
+    <label class="form-label">Exploração<select class="form-select" data-ui="mode"><option value="coupled">Motor + pausas térmicas</option><option value="mechanical">Motor contínuo</option><option value="process">Processo termodinâmico</option></select></label>
+    <label class="form-label">Reprodução<select class="form-select" data-ui="speed"><option value=".25">0,25×</option><option value=".5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+  </div>
+  <div class="ot-caption text-small text-muted"><span>Rotação imposta · 1× = 60°/s de apresentação</span><span>Sem cálculo de RPM, torque ou inércia</span></div>
+  <div class="ot-layout">
+    <div>
+      <div class="ot-stage">
+        <svg class="ot-machine cursor-interaction" data-ui="machine" viewBox="0 0 570 650" role="img" aria-label="Motor em corte isométrico. O pistão, a biela, o virabrequim, o comando e as válvulas são calculados a partir do mesmo ângulo."><g data-ui="solids"></g><g data-ui="overlay"></g></svg>
+      </div>
+      <div class="ot-caption text-small"><span data-ui="angles">Virabrequim 0° · comando 0°</span><span data-ui="clearance"></span></div>
+      <div class="viz-controls">
+        <label class="form-check"><input class="form-check-input" type="checkbox" data-ui="shell" checked><span class="form-check-label">Carcaça em corte</span></label>
+        <label class="form-check"><input class="form-check-input" type="checkbox" data-ui="labels"><span class="form-check-label">Rótulos</span></label>
+        <label class="form-check"><input class="form-check-input" type="checkbox" data-ui="flows" checked><span class="form-check-label">Setas de fluxo</span></label>
+      </div>
+      <div class="ot-selectrow">
+        <label class="form-label">Inspecionar peça<select class="form-select" data-ui="part"><option value="">Clique em uma peça</option></select></label>
+        <label class="form-label">Enquadramento<select class="form-select" data-ui="view"><option value="all">Motor completo</option><option value="valves">Comando e válvulas</option><option value="crank">Biela e virabrequim</option></select></label>
+      </div>
+      <div class="ot-piece-detail text-small" data-ui="description" aria-live="polite">Corte virtual com peças e fixadores. Selecione uma peça para consultar sua função.</div>
+    </div>
+    <div class="ot-plots">
+      <div class="ot-reading">
+        <div><span class="text-small text-muted">Volume</span><output aria-live="off" data-ui="volume"></output></div>
+        <div><span class="text-small text-muted">Pressão Otto</span><output aria-live="off" data-ui="pressure"></output></div>
+        <div><span class="text-small text-muted">Temperatura Otto</span><output aria-live="off" data-ui="temperature"></output></div>
+      </div>
+      <div class="ot-status text-small" data-ui="status" aria-live="polite"></div>
+      <div><div class="text-small">Pressão × volume · área = trabalho líquido</div><svg class="ot-plot" data-ui="pv" role="img" aria-label="Diagrama pressão-volume do ciclo Otto ideal, com os quatro estados e marcador sincronizado."></svg></div>
+      <div><div class="text-small">Temperatura × entropia · s₁ = 0</div><svg class="ot-plot" data-ui="ts" role="img" aria-label="Diagrama temperatura-entropia. A entropia relativa é calculada com cv ln(T/T1) mais R ln(V/V1)."></svg></div>
+      <div class="ot-legend text-small"><span><i class="ot-key" style="background:var(--viz-series-1)"></i>1→2 e 3→4 · isentrópicos</span><span><i class="ot-key" style="background:var(--viz-series-2)"></i>2→3 e 4→1 · isocóricos</span></div>
+    </div>
+  </div>
+  <div class="ot-angle"><div class="ot-range-label"><label class="form-label" for="otto-angle">Ângulo do virabrequim</label><output aria-live="off" data-ui="theta">0°</output></div><input id="otto-angle" class="form-range" data-ui="angle" type="range" min="0" max="720" step=".1" value="55"></div>
+  <div class="ot-stroke-buttons"><button class="btn" type="button" data-stroke="0">Admissão · 0–180°</button><button class="btn" type="button" data-stroke="1">Compressão · 180–360°</button><button class="btn" type="button" data-stroke="2">Expansão · 360–540°</button><button class="btn" type="button" data-stroke="3">Escape · 540–720°</button></div>
+  <div class="ot-selectrow">
+    <label class="form-label">Processo Otto<select class="form-select" data-ui="process"><option value="0">1 → 2 · compressão isentrópica</option><option value="1">2 → 3 · adição de calor isocórica</option><option value="2">3 → 4 · expansão isentrópica</option><option value="3">4 → 1 · rejeição de calor isocórica</option></select></label>
+    <div><div class="ot-range-label"><label class="form-label" for="otto-progress">Percorrer processo</label><output aria-live="off" data-ui="processPercent">0%</output></div><input id="otto-progress" class="form-range" data-ui="progress" type="range" min="0" max="1" step=".001" value="0"></div>
+  </div>
+  <div class="ot-bottom">
+    <div><div class="text-small">Deslocamento do pistão</div><svg class="ot-plot" data-ui="pistonChart" role="img" aria-label="Deslocamento exato do pistão em milímetros ao longo de 720 graus."></svg></div>
+    <div><div class="text-small">Levantamento das válvulas</div><svg class="ot-plot" data-ui="valveChart" role="img" aria-label="Levantamentos de admissão e escape em milímetros, sem cruzamento."></svg><div class="ot-legend text-small"><span><i class="ot-key" style="background:var(--viz-series-1)"></i>Admissão</span><span><i class="ot-key" style="background:var(--viz-series-2)"></i>Escape</span></div></div>
+  </div>
+  <hr>
+  <div class="ot-selectrow">
+    <div><div class="ot-range-label"><label class="form-label" for="otto-eps">Taxa de compressão ε</label><output aria-live="off" data-ui="epsValue">10,0 : 1</output></div><input id="otto-eps" class="form-range" data-ui="eps" type="range" min="6" max="14" step=".1" value="10"></div>
+    <div><div class="ot-range-label"><label class="form-label" for="otto-heat">Calor específico adicionado qin</label><output aria-live="off" data-ui="qinValue">800 kJ/kg</output></div><input id="otto-heat" class="form-range" data-ui="qin" type="range" min="200" max="1200" step="10" value="800"></div>
+  </div>
+  <div class="ot-columns">
+    <div><table class="table table-sm"><thead><tr><th>Balanço por ciclo</th><th class="text-end">J/kg</th><th class="text-end">J</th></tr></thead><tbody data-ui="energy"></tbody></table><div class="ot-caption"><span>Eficiência ideal <strong data-ui="efficiency"></strong></span><span class="text-small" data-ui="mass"></span></div></div>
+    <div><table class="table table-sm"><thead><tr><th>Geometria</th><th class="text-end">Valor</th></tr></thead><tbody data-ui="geometry"></tbody></table></div>
+  </div>
+  <details><summary>Estados, parâmetros e equações</summary>
+    <div class="table-responsive"><table class="table table-sm"><thead><tr><th>Estado</th><th>V [cm³]</th><th>p [kPa]</th><th>T [K]</th><th>s [J/(kg·K)]</th></tr></thead><tbody data-ui="states"></tbody></table></div>
+    <p class="text-small">Ar ideal com R = 287 J/(kg·K), cv = 717,5 J/(kg·K), cp = 1.004,5 J/(kg·K) e γ = 1,4. Estado 1: 100 kPa e 300 K. Massa fechada: m = p₁V₁/(RT₁). Referência s₁ = 0, com s − s₁ = cv ln(T/T₁) + R ln(V/V₁).</p>
+    <p class="text-small">x = r(1 − cos θ) + l − √(l² − r²sin²θ). V = Vc + πB²x/4. S = 2r, Vd = πB²S/4 e Vc = Vd/(ε − 1). As alterações de ε representam pistões alternativos com alturas de coroa diferentes. Não há transformação física de um pistão em funcionamento.</p>
+    <p class="text-small">T₂ = T₁ε^(γ−1), p₂ = p₁ε^γ, T₃ = T₂ + qin/cv, p₃ = p₂T₃/T₂, T₄ = T₃/ε^(γ−1) e p₄ = p₃/ε^γ. qout = cv(T₄−T₁), wnet = qin−qout e η = 1−ε^(1−γ). Nas isentrópicas, pV^γ e TV^(γ−1) são constantes.</p>
+    <p class="text-small">Levantamento h = 2,2 sin⁴(πu) mm dentro do evento, com u de 0 a 1, e zero fora. Para φ = θ/2, H = 36 + h, perfil do ressalto = R(−φ)[dh/dφ, −H]. Curvatura ρ = H + d²h/dφ² ≥ 3 mm. Velocidade e aceleração do levantamento são nulas nos limites. Distribuição didática, sem avanço, atraso ou cruzamento.</p>
+  </details>
+  <details><summary>Hipóteses e limites da representação</summary>
+    <p class="text-small">Os quatro cursos do motor e os quatro processos do ciclo Otto são representações diferentes. Admissão e escape trocam massa e ficam fora do modelo fechado. Nessas fases, pressão, temperatura e massa do modelo aparecem como não aplicáveis. As pausas a 360° e 540° tornam as transformações isocóricas visíveis. São um recurso didático, sem parada física prevista do virabrequim.</p>
+    <p class="text-small">A combustão é substituída por adição de calor. O indicador da vela é ilustrativo. A rejeição isocórica não corresponde exatamente à abertura do escape. Setas indicam sentido de fluxo, sem CFD. Não há atrito, vibração, torque instantâneo, flutuação de rotação, perdas térmicas, química ou dinâmica de molas calculados.</p>
+    <p class="text-small">Corte virtual com superfícies facetadas e projeção isométrica ortográfica. Câmara cilíndrica de teto plano, sem volumes de fendas ou cavidades dos anéis. Cabeçote, dutos, fixadores, ajustes e dentes são simplificados. O tucho mantém contato quase estático com o ressalto. A folga válvula-pistão e as conexões entre centros foram verificadas. A representação não é um projeto CAD pronto para fabricação nem uma certificação de ausência de todas as colisões.</p>
+    <div class="ot-columns text-small"><div><strong>Lubrificação · circuito esquemático</strong><p>Cárter → bomba não representada → galeria → mancais e comando → retorno ao cárter.</p></div><div><strong>Refrigeração · circuito esquemático</strong><p>Bomba não representada → camisa e cabeçote → radiador não representado → retorno.</p></div></div>
+    <p class="text-small">Base visual: Anatomy, Ryan, licença MIT, revisão 689dcf9. NASA: modelo térmico · METU: curvatura de ressaltos</p>
+  </details>
+  <details><summary>Verificações efetivamente executadas</summary><div data-ui="checks" class="text-small"></div></details>
+  <script>
+  /*OTTO_SOURCE*/
+  </script>
+</div>

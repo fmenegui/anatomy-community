@@ -1,0 +1,34 @@
+{
+  "id": "otto-four-stroke",
+  "title": "Motor de quatro tempos e ciclo Otto ideal",
+  "author": "fmenegui",
+  "prompt": "Use $anatomy para criar uma animação interativa de alta qualidade de um motor a gasolina monocilíndrico de quatro tempos, associado exclusivamente ao ciclo Otto. Não inclua Carnot. Quero rigor de engenharia na geometria, na cinemática, na distribuição e na termodinâmica.",
+  "kind": "SVG",
+  "agent": "Codex",
+  "model": "GPT (ChatGPT/Codex, exact revision unavailable)",
+  "skill": {
+    "kit": "sha256:b2fbd67ae3c704977587339387fd68594824ef016e58a3db1339d5b2e0661081",
+    "commit": "689dcf966e63d92be10a5d593c6e19e10acd4422"
+  },
+  "build": [
+    [
+      "src/build.mjs"
+    ]
+  ],
+  "pages": {
+    "dark": "src/otto.html",
+    "light": "src/otto-light.html"
+  },
+  "preview": "light",
+  "license": "MIT",
+  "tags": [
+    "engine",
+    "otto-cycle",
+    "thermodynamics",
+    "kinematics",
+    "mechanical-engineering",
+    "education",
+    "portuguese"
+  ],
+  "created": "2026-10-12"
+}

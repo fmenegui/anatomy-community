@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Inicialização e todos os seletores",
+    "Pausa, reprodução e reinício",
+    "Quatro tempos e campos fora do modelo",
+    "Slider manual 720°, processo isocórico e progresso",
+    "Parâmetros, limites e recálculo",
+    "Carcaça, rótulos, fluxos, seleção e enquadramento",
+    "Modos e velocidade de apresentação",
+    "Encerramento limpa agendamentos"
+  ],
+  "passed": 8,
+  "note": "Testes unitários executados em Node com DOM mínimo. Não validam layout, acessibilidade, CSP nem desempenho em navegador."
+}

@@ -1,0 +1,61 @@
+{
+  "executedAt": "2026-10-12T17:23:09.669Z",
+  "checks": [
+    {
+      "name": "Curso, biela, razão volumétrica e folga válvula-pistão",
+      "pass": true,
+      "detail": {
+        "amostras": 36005,
+        "erroBiela_mm": 8.526512829121202e-14,
+        "folgaMinima_mm": 6.615384615384642
+      }
+    },
+    {
+      "name": "Lei de levantamento, perfil envolvente e contato do tucho",
+      "pass": true,
+      "detail": {
+        "curvaturaMinima_mm": 3,
+        "contatoMaximo_mm": 5.715767664977296,
+        "erroSuporte_mm": 0.0000012322690161048477
+      }
+    },
+    {
+      "name": "Relação 2:1, continuidade e correia inextensível",
+      "pass": true,
+      "detail": {
+        "dentes": [
+          20,
+          40
+        ],
+        "passo_mm": 4.990714331149286,
+        "dentesCorreia": 164,
+        "deltaPistao720_mm": 0
+      }
+    },
+    {
+      "name": "Balanço, fechamento, eficiência e integração p–V / T–s",
+      "pass": true,
+      "detail": {
+        "cenarios": 15,
+        "pontosPorProcesso": 20001,
+        "erroRelPV": 3.018547054595832e-8,
+        "erroRelTS": 4.1484319649151185e-10,
+        "erroEta": 1.1102230246251565e-16,
+        "erroFechamento": 1.1368683772161603e-13
+      }
+    },
+    {
+      "name": "Marcadores, pausas isocóricas e campos não aplicáveis",
+      "pass": true,
+      "detail": {
+        "amostrasTimeline": 1728,
+        "amostrasProcessos": 404
+      }
+    }
+  ],
+  "limitations": [
+    "Não é uma análise de colisão CAD integral. Furos, ajustes, dentes e dutos têm simplificações de representação.",
+    "Contato do comando é cinemático quase estático. Não foram simulados forças de contato, separação dinâmica ou flutuação de válvula.",
+    "Inspeção em navegador e controles ainda não verificados neste relatório numérico."
+  ]
+}
